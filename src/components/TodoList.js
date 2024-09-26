@@ -9,7 +9,7 @@ const TodoList = () => {
   // Fetch Todos
   useEffect(() => {
     const fetchTodos = async () => {
-      const result = await axios.get(`${process.env.REACT_APP_API_URL}/todos`);
+      const result = await axios.get('http://localhost:5005/todos');
       setTodos(result.data);
     };
     fetchTodos();
@@ -19,7 +19,7 @@ const TodoList = () => {
   const addTodo = async () => {
     if (text && date) {
       const newTodo = { text, date };
-      const result = await axios.post(`${process.env.REACT_APP_API_URL}/add`, newTodo);
+      const result = await axios.post('http://localhost:5005/add', newTodo);
       setTodos([...todos, result.data]);
       setText('');
       setDate('');
